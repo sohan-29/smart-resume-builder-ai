@@ -1,23 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import ResumeForm from "./components/resumeForm";
+import ResumePreview from "./components/resumePreview";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [resumeData, setResumeData] = useState({});
 
   return (
-    <>
-      <div>
-        <h1 class="text-3xl font-bold underline text-center text-blue-500">
-          Hello world!
-        </h1>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-gray-100 p-6 flex flex-col md:flex-row gap-6">
+      <ResumeForm onChange={setResumeData} />
+      <ResumePreview data={resumeData} />
+    </div>
+  );
 }
 
-export default App
+export default App;
