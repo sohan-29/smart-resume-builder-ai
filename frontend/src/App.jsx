@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import UserInteractionPage from "./components/interactionPage";
 import BuildResume from "./components/buildResume";
 
@@ -14,10 +15,13 @@ function App() {
   });
 
   return (
-    <>
-      <UserInteractionPage userDataSet={userDataSet} setUserDataSet={setUserDataSet} />
-      <BuildResume userDataSet={userDataSet} />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<UserInteractionPage userDataSet={userDataSet} setUserDataSet={setUserDataSet} />} />
+        <Route path="/buildResume" element={<BuildResume userDataSet={userDataSet} />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

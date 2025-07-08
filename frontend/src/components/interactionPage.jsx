@@ -1,7 +1,7 @@
 import React, { use, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [recommendedFields, setRecommendedFields] = useState([
     "projects",
     "certifications",
@@ -65,7 +65,7 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
       <button
         onClick={() => {
           console.log(userDataSet);
-          // navigate("/previewResume");
+          navigate("/buildResume");
         }}
         className="mt-4 px-6 py-3 bg-green-500 text-white rounded"
       >Next</button>
