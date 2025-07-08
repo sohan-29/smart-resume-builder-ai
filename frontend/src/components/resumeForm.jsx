@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function ResumeForm({ setResumeData, userDataSet }) {
-  //add an interaction like the user able to add or remove sections dynamically by selecting the fields they want to include in the resume
   const [formData, setFormData] = useState(userDataSet);
 
   const handleChange = (e) => {

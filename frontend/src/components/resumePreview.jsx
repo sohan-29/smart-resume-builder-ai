@@ -10,11 +10,12 @@ function ResumePreview({ data }) {
       <div className="w-full md:w-1/2 p-4 bg-white border rounded shadow">
         <h1 className="text-2xl font-bold">{data.name}</h1>
         <p className="text-gray-600 italic">{data.title}</p>
-        <p>Email: {data.email} | Phone: {data.phone}</p>
+        <p>{data.email && `| Email: ${data.email}`}{data.phone && `| Phone: ${data.phone}`}</p>
+        <p>{data.linkedIn && <a href={data.linkedIn}>| LinkedIn: {data.linkedIn}</a>}{data.github && <a href={data.github}>| GitHub: ${data.github}</a>}{data.website && <a href={data.website}>| Website: ${data.website}</a>}</p>
         <hr className="my-2" />
         <div>
           {fields.map((element) => {
-            if (['name', 'title', 'email', 'phone'].includes(element)) return null;
+            if (['name', 'title', 'email', 'phone', 'linkedIn', 'github', 'website'].includes(element)) return null;
             return (
               <section className="w-full my-4" key={element}>
                 <h2 className="font-semibold mt-3">{element.charAt(0).toUpperCase() + element.slice(1)}:</h2>

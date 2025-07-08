@@ -4,6 +4,9 @@ import Header from "./header";
 const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
   const navigate = useNavigate();
   const [recommendedFields, setRecommendedFields] = useState([
+    "linkedIn",
+    "github",
+    "website",
     "projects",
     "certifications",
     "experience",
