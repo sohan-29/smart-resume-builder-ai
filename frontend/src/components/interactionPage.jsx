@@ -66,7 +66,7 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
           ))}
         </div>
         <button
-          onClick={navigate("/buildResume")}
+          onClick={() => navigate("/buildResume")}
           className="mt-4 px-6 py-3 bg-green-500 text-white rounded"
         >Next</button>
       </div>
