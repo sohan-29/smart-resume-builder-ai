@@ -1,17 +1,8 @@
 import { useState } from "react";
 
-function ResumeForm({ onChange }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    title: "",
-    email: "",
-    phone: "",
-    summary: "",
-    education: "",
-    experience: "",
-    skills: "",
-    projects: "",
-  });
+function ResumeForm({ onChange, userDataSet }) {
+  //add an interaction like the user able to add or remove sections dynamically by selecting the fields they want to include in the resume
+  const [formData, setFormData] = useState(userDataSet);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
