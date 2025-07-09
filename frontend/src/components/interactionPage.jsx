@@ -1,9 +1,9 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
 const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
   const navigate = useNavigate();
-  const [recommendedFields, setRecommendedFields] = useState([
+  const defaultRecommendedFields = [
     "linkedIn",
     "github",
     "website",
@@ -16,8 +16,32 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
     "publications",
     "interests",
     "references",
-  ]);
-  const [selectedFields, setSelectedFields] = useState(Object.keys(userDataSet));
+  ];
+
+  // Load from localStorage if available, else use defaults
+  const getInitialSelectedFields = () => {
+    const saved = localStorage.getItem("selectedFields");
+    if (saved) return JSON.parse(saved);
+    return Object.keys(userDataSet);
+  };
+  const getInitialRecommendedFields = () => {
+    const saved = localStorage.getItem("recommendedFields");
+    if (saved) return JSON.parse(saved);
+    return defaultRecommendedFields.filter(f => !Object.keys(userDataSet).includes(f));
+  };
+
+  const [recommendedFields, setRecommendedFields] = useState(getInitialRecommendedFields());
+  const [selectedFields, setSelectedFields] = useState(getInitialSelectedFields());
+
+  useEffect(() => {
+    localStorage.setItem("selectedFields", JSON.stringify(selectedFields));
+    localStorage.setItem("recommendedFields", JSON.stringify(recommendedFields));
+  }, [selectedFields, recommendedFields]);
+
+  useEffect(() => {
+    setSelectedFields(getInitialSelectedFields());
+    setRecommendedFields(getInitialRecommendedFields());
+  }, [userDataSet]);
 
   const handleRemovedField = (field, index) => {
     setSelectedFields(selectedFields.filter((_, i) => i !== index));
