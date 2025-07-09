@@ -43,7 +43,7 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
           {selectedFields.map((field, index) => {
             return (
               <div key={index} className="flex items-center bg-[#00000029] rounded-full pl-6 shadow mb-4 h-fit w-fit">
-                <h2 className="text-xl font-semibold">{field}</h2>
+                <h2 className="text-xl font-semibold">{field[0].toUpperCase()+field.slice(1)}</h2>
                   <button
                   onClick={() => handleRemovedField(field, index)}
                   className="mb-1 mt-2 pr-3 px-1.5 h-9 w-9 cursor-pointer group"
@@ -58,7 +58,7 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
         <div className="flex flex-wrap gap-4 w-full bg-[#11111169] pt-8 px-8 pb-4 rounded-xl min-h-44 space-y-4">
           {recommendedFields.map((field, index) => (
             <div key={index} className="flex items-center bg-[#00000029] rounded-full pl-6 shadow mb-4 h-fit w-fit">
-              <h3 className="text-lg font-semibold">{field}</h3>
+              <h3 className="text-lg font-semibold">{field[0].toUpperCase()+field.slice(1)}</h3>
               <button
                 onClick={() => handleAddedField(field, index)}
                 className="mb-1 mt-2 pr-3 px-1.5 h-10 w-10 cursor-pointer group"
