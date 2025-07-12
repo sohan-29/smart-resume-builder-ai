@@ -13,6 +13,10 @@ function ResumeForm({ setResumeData, userDataSet }) {
   };
 
   const getAISuggestion = async () => {
+    if (!formData.summary || formData.summary.trim() === "") {
+      setSuggestion("⚠️ Please enter a summary to get suggestions.");
+      return;
+    }
     setLoading(true);
     setSuggestion("");
 
@@ -25,8 +29,13 @@ function ResumeForm({ setResumeData, userDataSet }) {
         body: JSON.stringify({ text: formData.summary }),
       });
 
-      const data = await res.json();
-      setSuggestion(data.suggestion);
+      if (!res.ok) {
+        const errorData = await res.json();
+        setSuggestion(`⚠️ Error: ${errorData.error || 'Failed to fetch suggestion'}`);
+      } else {
+        const data = await res.json();
+        setSuggestion(data.suggestion);
+      }
     } catch (err) {
       setSuggestion("⚠️ Failed to fetch suggestion");
     }
