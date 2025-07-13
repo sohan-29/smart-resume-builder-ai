@@ -5,11 +5,10 @@ const LandingPage = () => {
   return (
     <div className="font-sans text-gray-800 bg-white">
       <Header />
-
-      <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 px-6 py-12 text-center">
+      <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-blue-300 text-center">
         <h1 className="text-5xl font-bold mb-4 text-blue-700">Build Your Professional Resume Effortlessly</h1>
         <p className="text-xl mb-6 max-w-2xl mx-auto">
-          Create a standout resume with our easy - to - use builder.Customize your details, preview your resume, and get ready to download
+          Create a standout resume with our easy to use builder.Customize your details, preview your resume, and get ready to download
         </p>
         <a href="/customizeResume" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
           Get Started
@@ -25,7 +24,7 @@ const LandingPage = () => {
           <FeatureCard title="📥 PDF Export" desc="Download your finished resume as a clean, professional PDF." />
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );
