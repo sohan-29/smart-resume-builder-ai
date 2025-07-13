@@ -44,7 +44,7 @@ useEffect(() => {
 
       <section className="py-12 px-6 bg-gray-50 text-center">
         <h2 className="text-3xl font-bold mb-8 text-gray-800">Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:mx-6">
           {features.map((feature, index) => (
             <FeatureCard key={index} title={feature.title} desc={feature.desc} />
           ))}
