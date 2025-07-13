@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
 import { AzureKeyCredential } from "@azure/core-auth";
+import apis from "./apis.js";
 
 dotenv.config();
 
@@ -13,6 +14,9 @@ const model = "openai/gpt-4.1";
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Use the routes from apis.js
+app.use("/", apis);
 
 app.post("/suggest", async (req, res) => {
   const { text } = req.body;
