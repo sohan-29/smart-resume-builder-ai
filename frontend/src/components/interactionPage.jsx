@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./header";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./footer";
 
 const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
   const navigate = useNavigate();
@@ -86,6 +87,7 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
           className="mt-4 px-6 py-3 bg-green-500 text-white rounded"
         >Next</button>
       </div>
+      <Footer />
     </>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import ResumeForm from "./resumeForm";
 import ResumePreview from "./resumePreview";
 import Header from "./header";
+import Footer from "./footer";
 
 const BuildResume = ({ userDataSet }) => {
   const [resumeData, setResumeData] = useState({});
@@ -13,6 +14,7 @@ const BuildResume = ({ userDataSet }) => {
         <ResumeForm setResumeData={setResumeData} userDataSet={userDataSet} />
         <ResumePreview data={resumeData} />
       </div>
+      <Footer />
     </>
 
   );

@@ -1,3 +1,4 @@
+import Footer from "./footer";
 import Header from "./header";
 
 const LandingPage = () => {
@@ -25,6 +26,7 @@ const LandingPage = () => {
         </div>
       </section>
       
+      <Footer />
     </div>
   );
 };
