@@ -26,17 +26,27 @@ const fetchIntroduction = async () => {
   }
 };
 
+const fetchAboutInformation = async () => {
+  try {
+    const response = await axios.get('http://localhost:5000/about');
+    setIntro(prevIntro => ({ ...prevIntro, about: response.data.about }));
+  } catch (error) {
+    console.error("Error fetching about information:", error);
+  }
+};
+
 useEffect(() => {
   fetchFeatures();
   fetchIntroduction();
+  fetchAboutInformation();
 }, []);
 
   return (
     <div className="font-sans text-gray-800 bg-white">
       <Header />
-      <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-blue-300 text-center">
+      <section className="min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-blue-300 text-center">
         <h1 className="text-5xl font-bold mb-4 text-blue-700">{intro?.title}</h1>
-        <p className="text-xl mb-6 max-w-2xl mx-auto">{intro?.intro}</p>
+        <p className="text-xl mb-6 max-w-2xl mx-3">{intro?.intro}</p>
         <a href="/customizeResume" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
           Get Started
         </a>
@@ -49,6 +59,11 @@ useEffect(() => {
             <FeatureCard key={index} title={feature.title} desc={feature.desc} />
           ))}
         </div>
+      </section>
+
+      <section className="py-12 px-12 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-8 text-gray-800">About Us</h2>
+        <p className="text-lg mx-9">{intro?.about}</p>
       </section>
 
       <Footer />

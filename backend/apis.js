@@ -27,7 +27,7 @@ const featuresData = {
 };
 
 const aboutData = {
-    about: "Smart Resume Builder AI is a web application that helps users create professional resumes with ease. It offers features like custom field selection, AI-powered suggestions, and live previews."
+    about: "Smart Resume Builder AI is a web application that helps users create professional resumes with ease. It offers features like custom field selection, AI-powered suggestions, and live previews. The application is designed to be user-friendly and efficient, allowing users to focus on their content rather than formatting. Whether you're a student, a professional, or someone looking to update their resume, this tool provides the necessary features to create a standout resume quickly. Our mission is to empower job seekers with the tools they need to present their skills and experiences effectively. Our goal is to simplify the resume-building process and help users stand out in the job market."
 };
 
 const introData = {
