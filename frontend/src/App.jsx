@@ -9,7 +9,7 @@ function App() {
     name: "",
     title: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     summary: "",
     education: "",
     skills: "",
