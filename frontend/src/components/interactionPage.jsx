@@ -6,12 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./footer";
 
 const SelectedFieldCard = ({ selectedFields, requiredFields, handleRemovedField }) => (
-  <div className="flex flex-wrap gap-4 w-4xl mx-auto bg-[#11111169] pt-8 px-8 pb-4 rounded-xl min-h-44">
+  <div className="flex flex-wrap gap-2 sm:gap-3 w-full mx-auto bg-[#11111136] pt-8 px-8 pb-4 rounded-xl min-h-44">
     {selectedFields.map((field, index) => {
       const fieldName = field.charAt(0).toUpperCase() + field.slice(1);
       return (
-        <div key={index} className="flex items-center bg-[#00000029] rounded-full pl-6 shadow mb-2 h-fit w-fit">
-          <h2 className="text-xl font-semibold">{fieldName}</h2>
+        <div key={index} className="flex items-center bg-[#00000018] rounded-full pl-6 shadow mb-1 sm:mb-2 h-fit w-fit">
+          <h2 className="text-lg lg:text-xl lg:font-semibold">{fieldName}</h2>
           <button
             onClick={() => {
               if (!requiredFields.includes(field)) {
@@ -31,10 +31,10 @@ const SelectedFieldCard = ({ selectedFields, requiredFields, handleRemovedField 
 );
 
 const RecommendedFieldCard = ({ recommendedFields, handleAddedField }) => (
-  <div className="flex flex-wrap gap-4 w-4xl mx-auto bg-[#11111169] pt-8 px-8 pb-4 rounded-xl min-h-44">
+  <div className="flex flex-wrap gap-2 sm:gap-3 w-full mx-auto bg-[#11111136] pt-8 px-5 sm:px-8 pb-4 rounded-xl min-h-44">
     {recommendedFields.map((field, index) => (
-      <div key={index} className="flex items-center bg-[#00000029] rounded-full pl-6 shadow mb-4 h-fit w-fit">
-        <h3 className="text-lg font-semibold">{field[0].toUpperCase() + field.slice(1)}</h3>
+      <div key={index} className="flex items-center bg-[#00000018] rounded-full pl-6 shadow mb-4 h-fit w-fit">
+        <h3 className="text-lg lg:text-xl lg:font-semibold">{field[0].toUpperCase() + field.slice(1)}</h3>
         <button
           onClick={() => handleAddedField(field, index)}
           className="mb-1 mt-2 pr-3 px-1.5 h-10 w-10 cursor-pointer group"
@@ -85,12 +85,12 @@ const UserInteractionPage = ({ userDataSet, setUserDataSet }) => {
     <>
       <Header />
       <ToastContainer />
-      <div className="bg-gray-100 p-6 flex flex-col my-12 rounded-xl mx-auto gap-6 w-5xl">
-        <h2 className="text-xl md:text-3xl font-bold mt-2 ml-3">Selected Fields :</h2>
+      <div className="bg-gray-50 p-6 lg:p-9 flex flex-col my-12 rounded-xl mx-auto gap-6 w-xs md:w-2xl lg:w-4xl xl:w-6xl">
+        <h2 className="text-2xl md:text-3xl font-bold mt-2 ml-3">Selected Fields :</h2>
         <SelectedFieldCard selectedFields={selectedFields} requiredFields={requiredFields} handleRemovedField={handleRemovedField} />
-        <h2 className="text:xl md:text-3xl font-bold mt-2 ml-3">Recommended Fields :</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mt-2 ml-3">Recommended Fields :</h2>
         <RecommendedFieldCard recommendedFields={recommendedFields} handleAddedField={handleAddedField} />
-        <button onClick={() => navigate("/buildResume")} className="mt-4 px-6 py-3 bg-blue-500 text-white w-4xl mx-auto rounded-xl">Next</button>
+        <button onClick={() => navigate("/buildResume")} className="mt-4 px-6 py-3 bg-blue-500 text-white w-full mx-auto rounded-xl">Next</button>
       </div>
       <Footer />
     </>
