@@ -31,7 +31,7 @@ app.post("/suggest", async (req, res) => {
       body: {
         messages: [
           { role:"system", content: "You are a helpful assistant." },
-          { role:"user", content: `Improve this resume line: "${text}"` }
+          { role:"user", content: `Enhance this line to make it clear, compelling, and professionally impactful—highlight achievements, responsibilities, or value delivered: "${text}"` }
         ],
         temperature: 1.0,
         top_p: 1.0,
