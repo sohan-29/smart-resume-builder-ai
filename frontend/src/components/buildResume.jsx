@@ -10,7 +10,7 @@ const BuildResume = ({ userDataSet }) => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gray-100 p-6 flex flex-col md:flex-row gap-6">
+      <div className="bg-gray-100 p-6 flex flex-col md:flex-row gap-6">
         <ResumeForm setResumeData={setResumeData} userDataSet={userDataSet} />
         <ResumePreview data={resumeData} />
       </div>

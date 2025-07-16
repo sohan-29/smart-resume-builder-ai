@@ -8,21 +8,84 @@ function ResumePreview({ data }) {
       </div>
     ) : (
       <div className="w-full md:w-1/2 p-4 bg-white border rounded shadow">
-        <h1 className="text-2xl font-bold">{data.name}</h1>
+        <h1 className="text-2xl font-bold">{data.name.toUpperCase()}</h1>
         <p className="text-gray-600 italic">{data.title}</p>
-        <p>{data.email && `| Email: ${data.email}`}{data.phone && `| Phone: ${data.phone}`}</p>
-        <p>{data.linkedIn && <a href={data.linkedIn}>| LinkedIn: {data.linkedIn}</a>}{data.github && <a href={data.github}>| GitHub: ${data.github}</a>}{data.website && <a href={data.website}>| Website: ${data.website}</a>}</p>
+        <p>{data.email && <>Email: <a href={`mailto:${data.email}`} className="font-mono text-gray-500">{data.email}</a></>}{data.phoneNumber && <> | Phone: <a href={`tel:${data.phoneNumber}`} className="font-mono text-gray-500">{data.phoneNumber}</a></>}</p>
+        <p>{data.linkedIn && <>| LinkedIn: <a href={data.linkedIn} className="font-mono text-gray-500">{data.linkedIn.split('/').pop()}</a></>}{data.github && <>| GitHub: <a href={data.github} className="font-mono text-gray-500">{data.github.split('/').pop()}</a></>}{data.website && <>| Website: <a href={data.website} className="font-mono text-gray-500">{data.website}</a></>}</p>
         <hr className="my-2" />
         <div>
-          {fields.map((element) => {
-            if (['name', 'title', 'email', 'phone', 'linkedIn', 'github', 'website'].includes(element)) return null;
-            return (
-              <section className="w-full my-4" key={element}>
-                <h2 className="font-semibold mt-3">{element.charAt(0).toUpperCase() + element.slice(1)}:</h2>
-                <p className="pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full max-w-full">{data[element]}</p>
-              </section>
-            )
-          })}
+          {data.summary && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Summary:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.summary}</p>
+            </section>
+          )}
+          {data.education && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Education:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.education}</p>
+            </section>
+          )}
+          {data.skills && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Skills:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.skills}</p>
+            </section>
+          )}
+          {data.experience && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Experience:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.experience}</p>
+            </section>
+          )}
+          {data.projects && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Projects:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.projects}</p>
+            </section>
+          )}
+          {data.certifications && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Certifications:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.certifications}</p>
+            </section>
+          )}
+          {data.volunteerExperience && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Volunteer Experience:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.volunteerExperience}</p>
+            </section>
+          )}
+          {data.awards && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Awards:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.awards}</p>
+            </section>
+          )}
+          {data.languages && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Languages:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.languages}</p>
+            </section>
+          )}
+          {data.publications && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Publications:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.publications}</p>
+            </section>
+          )}
+          {data.interests && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">Interests:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.interests}</p>
+            </section>
+          )}
+          {data.references && (
+            <section className="w-full my-4">
+              <h2 className="font-semibold text-lg mt-3">References:</h2>
+              <p className="font-light pl-4 pt-2 pr-1 break-words whitespace-pre-wrap overflow-wrap break-word w-full">{data.references}</p>
+            </section>
+          )}
         </div>
       </div>
     )
