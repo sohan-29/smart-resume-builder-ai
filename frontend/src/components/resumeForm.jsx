@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function ResumeForm({ setResumeData, userDataSet }) {
+function ResumeForm({ setResumeData, userDataSet, setExportMode }) {
   const [formData, setFormData] = useState(userDataSet);
   const [suggestion, setSuggestion] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    setExportMode(Object.values(formData).every(value => value.trim() !== ""));
+  }, [formData]);
 
   const fields = [
     { name: "name", label: "Name", type: "text", required: true },

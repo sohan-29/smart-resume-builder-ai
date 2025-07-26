@@ -7,16 +7,17 @@ import DownloadResume from "./downloadResume";
 
 const BuildResume = ({ userDataSet }) => {
   const [resumeData, setResumeData] = useState({});
+  const [exportMode, setExportMode] = useState(false);
 
   return (
     <>
       <Header />
       <section className="bg-gray-100 p-6 flex flex-col items-center">
       <div className="w-full flex flex-col md:flex-row gap-6">
-        <ResumeForm setResumeData={setResumeData} userDataSet={userDataSet} />
+        <ResumeForm setResumeData={setResumeData} userDataSet={userDataSet} setExportMode={setExportMode} />
         <ResumePreview data={resumeData} />
       </div>
-      <DownloadResume data={resumeData} />
+      <DownloadResume exportMode={exportMode} />
       </section>
       <Footer />
     </>
