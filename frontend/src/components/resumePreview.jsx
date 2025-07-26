@@ -7,7 +7,7 @@ function ResumePreview({ data }) {
         <p className="text-gray-600">Enter your details to see the preview.</p>
       </div>
     ) : (
-      <div className="w-full md:w-1/2 p-4 bg-white border rounded shadow">
+      <div id="resumeCanvas" className="w-full md:w-1/2 p-4 bg-white border rounded shadow">
         <h1 className="text-2xl font-bold">{data.name.toUpperCase()}</h1>
         <p className="text-gray-600 italic">{data.title}</p>
         <p>{data.email && <>Email: <a href={`mailto:${data.email}`} className="font-mono text-gray-500">{data.email}</a></>}{data.phoneNumber && <> | Phone: <a href={`tel:${data.phoneNumber}`} className="font-mono text-gray-500">{data.phoneNumber}</a></>}</p>
