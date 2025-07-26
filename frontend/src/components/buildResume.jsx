@@ -16,7 +16,7 @@ const BuildResume = ({ userDataSet }) => {
         <ResumeForm setResumeData={setResumeData} userDataSet={userDataSet} />
         <ResumePreview data={resumeData} />
       </div>
-      <DownloadResume />
+      <DownloadResume data={resumeData} />
       </section>
       <Footer />
     </>
