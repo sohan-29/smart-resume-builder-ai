@@ -7,12 +7,12 @@ function ResumePreview({ data }) {
         <p className="text-gray-600">Enter your details to see the preview.</p>
       </div>
     ) : (
-      <div id="resumeCanvas" className="w-full md:w-1/2 p-4 bg-white border rounded shadow">
-        <h1 className="text-2xl font-bold">{data.name.toUpperCase()}</h1>
-        <p className="text-gray-600 italic">{data.title}</p>
-        <p>{data.email && <>Email: <a href={`mailto:${data.email}`} className="font-mono text-gray-500">{data.email}</a></>}{data.phoneNumber && <> | Phone: <a href={`tel:${data.phoneNumber}`} className="font-mono text-gray-500">{data.phoneNumber}</a></>}</p>
-        <p>{data.linkedIn && <>| LinkedIn: <a href={data.linkedIn} className="font-mono text-gray-500">{data.linkedIn.split('/').pop()}</a></>}{data.github && <>| GitHub: <a href={data.github} className="font-mono text-gray-500">{data.github.split('/').pop()}</a></>}{data.website && <>| Website: <a href={data.website} className="font-mono text-gray-500">{data.website}</a></>}</p>
-        <hr className="my-2" />
+      <div id="resumeCanvas" className="w-full md:w-full p-6 px-7 bg-white">
+        <h1 className="text-3xl font-bold">{data.name.toUpperCase()}</h1>
+        <p className="text-gray-700 italic text-lg">{data.title}</p>
+        <p className="text-gray-800">{data.email && <>Email: <a href={`mailto:${data.email}`} className="font-mono text-gray-600">{data.email}</a></>}{data.phoneNumber && <> | Phone: <a href={`tel:${data.phoneNumber}`} className="font-mono text-gray-600">{data.phoneNumber}</a></>}</p>
+        <p className="text-gray-800">{data.linkedIn && <>| LinkedIn: <a href={data.linkedIn} className="font-mono text-gray-600">{data.linkedIn.split('/').pop()}</a></>}{data.github && <>| GitHub: <a href={data.github} className="font-mono text-gray-600">{data.github.split('/').pop()}</a></>}{data.website && <>| Website: <a href={data.website} className="font-mono text-gray-600">{data.website}</a></>}</p>
+        <hr className="my-4 border-gray-300" />
         <div>
           {data.summary && (
             <section className="w-full my-4">

@@ -1,47 +1,48 @@
-import html2pdf from 'html2pdf.js';
 
-const DownloadResume = ({ exportMode }) => {
+import html2canvas from 'html2canvas-pro';
+import { jsPDF } from "jspdf";
+
+
+const DownloadResume = ({ name, title, exportMode }) => {
+
   const handleDownload = () => {
-    const element = document.getElementById('resumeCanvas');
-    console.log(element.innerText)
-    if (!element) {
-      console.error('Error: resumeCanvas element not found. Cannot download PDF.');
-      return;
-    }
+    if (!exportMode) return;
 
-    const opt = {
-      margin: 0,
-      filename: 'resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: true
-      },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
+    const resume = document.getElementById('resumeCanvas');
+    html2canvas(resume, { scale: 3 }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
 
-    html2pdf()
-      .set(opt)
-      .from(element)
-      .toPdf()
-      .get('pdf')
-      .then((pdf) => {
-        pdf.save('resume.pdf');
-      })
-      .catch((error) => {
-        console.error('Error generating PDF:', error);
-      });
+      // Calculate PDF dimensions
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+
+      // Calculate image dimensions to fit PDF page
+      const imgProps = {
+        width: canvas.width,
+        height: canvas.height
+      };
+      const ratio = Math.min(pdfWidth / imgProps.width, pdfHeight / imgProps.height);
+      const imgWidth = imgProps.width * ratio;
+      const imgHeight = imgProps.height * ratio;
+
+      // Add image to PDF centered
+      const x = (pdfWidth - imgWidth) / 2;
+      const y = 3; // small top margin
+      pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+      pdf.save(`${name}_${title}_Resume.pdf`);
+    });
   };
 
   return (
     <button
       onClick={handleDownload}
-      className={`mt-4 px-6 py-2 rounded ${!exportMode
+      disabled={!exportMode}
+      className={`mt-4 px-6 py-2 rounded ${
+        !exportMode
           ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
           : 'bg-blue-600 text-white hover:bg-blue-700 cursor-pointer'
-        }`}
+      }`}
     >
       Download as PDF
     </button>
